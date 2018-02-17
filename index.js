@@ -7,7 +7,7 @@ function animate(element, clazz) {
   });
 }
 
-function alert2(content) {
+exports.alert2 = function(content) {
   return new Promise((res, rej) => {
     const message = document.createElement("div");
     message.style.cssText =
@@ -27,6 +27,4 @@ function alert2(content) {
     };
     document.body.appendChild(backdrop);
   });
-}
-
-exports.alert2 = alert2;
+};
