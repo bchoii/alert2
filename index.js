@@ -7,7 +7,7 @@ function animate(element, clazz) {
   });
 }
 
-exports.alert2 = function(content) {
+function alert2(content) {
   return new Promise((res, rej) => {
     const message = document.createElement("div");
     message.style.cssText =
@@ -17,7 +17,7 @@ exports.alert2 = function(content) {
     const backdrop = document.createElement("div");
     backdrop.style.cssText =
       "background:rgba(255, 255, 255, 0.8);position:absolute;top:0;left:0;bottom:0;right:0;text-align:center;padding:10vh;";
-    backdrop.classList.add("alert");
+    backdrop.classList.add("alert2");
     backdrop.classList.add("fadein");
     backdrop.appendChild(message);
     backdrop.onclick = async e => {
@@ -27,4 +27,6 @@ exports.alert2 = function(content) {
     };
     document.body.appendChild(backdrop);
   });
-};
+}
+
+module.exports = { alert2 };

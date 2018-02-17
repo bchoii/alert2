@@ -1,4 +1,4 @@
-.alert.fadein {
+.alert2.fadein {
   animation: fadein 0.3s cubic-bezier(0, 1, 1, 1);
 }
 
@@ -13,7 +13,7 @@
   }
 }
 
-.alert.fadeout {
+.alert2.fadeout {
   animation: fadeout 0.3s cubic-bezier(1, 0, 1, 1);
 }
 
