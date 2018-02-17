@@ -1,4 +1,13 @@
-exports.alert2 = function(content) {
+function animate(element, clazz) {
+  return new Promise((res, rej) => {
+    element.addEventListener("animationend", () => {
+      res();
+    });
+    element.classList.add(clazz);
+  });
+}
+
+module.exports = function(content) {
   return new Promise((res, rej) => {
     const message = document.createElement("div");
     message.style.cssText =
