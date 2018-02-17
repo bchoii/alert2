@@ -29,4 +29,4 @@ function alert2(content) {
   });
 }
 
-exports = { alert2 };
+exports.alert2 = alert2;
