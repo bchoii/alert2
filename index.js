@@ -17,19 +17,25 @@ function animate(element, clazz) {
 function show(content) {
   return new Promise(async (res, rej) => {
     console.log("DEBUG");
-    const message = document.createElement("div");
-    message.classList.add("messagebox");
-    message.textContent = content;
+    const button = document.createElement("div");
+    button.textContent = "Ok";
+    button.onclick = () => {
+      hide(res);
+    };
+    button.focus();
+
+    const messagebox = document.createElement("div");
+    messagebox.classList.add("messagebox");
+    messagebox.textContent = content;
+    messagebox.addChild(document.createElement("hr"));
+    messagebox.addChild(button);
 
     // hide();
     background = document.createElement("div");
     background.classList.add("alert2");
     background.classList.add("background");
     background.classList.add("fadein");
-    background.appendChild(message);
-    background.onclick = () => {
-      hide(res);
-    };
+    background.appendChild(messagebox);
     document.body.appendChild(background);
   });
 }
