@@ -27,8 +27,8 @@ function show(content) {
     const messagebox = document.createElement("div");
     messagebox.classList.add("messagebox");
     messagebox.textContent = content;
-    messagebox.addChild(document.createElement("hr"));
-    messagebox.addChild(button);
+    messagebox.appendChild(document.createElement("hr"));
+    messagebox.appendChild(button);
 
     // hide();
     background = document.createElement("div");
