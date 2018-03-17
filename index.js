@@ -1,3 +1,10 @@
+var background;
+
+function removeChildren(node) {
+  var cNode = node.cloneNode(false);
+  node.parentNode.replaceChild(cNode, node);
+}
+
 function animate(element, clazz) {
   return new Promise((res, rej) => {
     element.addEventListener("animationend", () => {
@@ -8,25 +15,33 @@ function animate(element, clazz) {
 }
 
 function alert2(content) {
-  return new Promise((res, rej) => {
+  return new Promise(async (res, rej) => {
+    console.log("DEBUG");
     const message = document.createElement("div");
-    message.style.cssText =
-      "display:inline-block;padding:10vh;background:white;border:1px solid #ccc;";
+    message.classList.add("messagebox");
     message.textContent = content;
 
-    const backdrop = document.createElement("div");
-    backdrop.style.cssText =
-      "background:rgba(255, 255, 255, 0.8);position:absolute;top:0;left:0;bottom:0;right:0;text-align:center;padding:10vh;";
-    backdrop.classList.add("alert2");
-    backdrop.classList.add("fadein");
-    backdrop.appendChild(message);
-    backdrop.onclick = async e => {
-      await animate(backdrop, "fadeout");
-      document.body.removeChild(backdrop);
-      res();
+    // hide();
+    background = document.createElement("div");
+    background.classList.add("alert2");
+    background.classList.add("background");
+    background.classList.add("fadein");
+    background.appendChild(message);
+    background.onclick = () => {
+      hide(res);
     };
-    document.body.appendChild(backdrop);
+    document.body.appendChild(background);
   });
 }
 
-module.exports = { alert2 };
+async function hide(done) {
+  if (background) {
+    await animate(background, "fadeout");
+    document.body.removeChild(background);
+  }
+  if (done) {
+    done();
+  }
+}
+
+module.exports = { alert2, hide };
