@@ -14,7 +14,7 @@ function animate(element, clazz) {
   });
 }
 
-function alert2(content) {
+function show(content) {
   return new Promise(async (res, rej) => {
     console.log("DEBUG");
     const message = document.createElement("div");
@@ -44,4 +44,4 @@ async function hide(done) {
   }
 }
 
-module.exports = { alert2, hide };
+module.exports = { show, hide };
