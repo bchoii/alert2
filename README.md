@@ -10,7 +10,8 @@ Simple alternative to alert.
 
     <button
       onClick={async () => {
-        alert2.show("Message");
+        console.log(alert2);
+        alert2.show(`Message ${new Date()}`);
         await new Promise(r => setTimeout(r, 2000));
         alert2.hide();
       }}
